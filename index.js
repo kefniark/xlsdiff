@@ -30,6 +30,10 @@ function xlsx2txt(xlsxfile) {
                     }
                 }
                 txt += '\r\n';
+
+                // use multiple console.log big ones can be truncated on mac
+                console.log(txt);
+                txt = '';
             }
         }
     }

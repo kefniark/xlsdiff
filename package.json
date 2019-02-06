@@ -1,6 +1,6 @@
 {
   "name": "xlsdiff",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tool used to convert XLS file to text and be used with git diff",
   "main": "index.js",
   "directories": {
