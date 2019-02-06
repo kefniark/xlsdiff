@@ -10,6 +10,7 @@
     "xlsdiff": "./bin/xlsdiff.js"
   },
   "scripts": {
+    "xlsdiff": "node ./bin/xlsdiff.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -9,8 +9,7 @@ This tool just convert `*.xls` to text, for git to be able to diff files
 npm install xlsdiff -g
 
 # Add to gitconfig
-git config --global diff.xls.binary true
-git config --global diff.xls.textconv xlsdiff
+or
 ```
 
 from now you can now diff excel files

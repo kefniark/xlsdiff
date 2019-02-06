@@ -6,28 +6,31 @@ function xlsx2txt(xlsxfile) {
     var obj = xlsx.parse(xlsxfile);
     var txt = "";
     if (obj.length > 0) {
-        var csvobj = obj[0].data;
+        for (var tab = 0; tab < obj.length; tab++) {
+            var csvobj = obj[tab].data;
 
-        for (var y = 0; y < csvobj.length; ++y) {
-            for (var x = 0; x < csvobj[y].length; ++x) {
-                if (csvobj[y][x] != undefined) {
-                    var str = csvobj[y][x].toString();
+            for (var y = 0; y < csvobj.length; ++y) {
+                txt +=  obj[tab].name + ' | ';
+                for (var x = 0; x < csvobj[y].length; ++x) {
+                    if (csvobj[y][x] != undefined) {
+                        var str = csvobj[y][x].toString();
 
-                    if (str.indexOf(',') >= 0) {
-                        txt += '"';
-                        txt += csvobj[y][x];
-                        txt += '"';
+                        if (str.indexOf(',') >= 0) {
+                            txt += '"';
+                            txt += csvobj[y][x];
+                            txt += '"';
+                        }
+                        else {
+                            txt += csvobj[y][x];
+                        }
                     }
-                    else {
-                        txt += csvobj[y][x];
+
+                    if (x < csvobj[y].length - 1) {
+                        txt += ' | ';
                     }
                 }
-
-                if (x < csvobj[y].length - 1) {
-                    txt += ' | ';
-                }
+                txt += '\r\n';
             }
-            txt += '\r\n';
         }
     }
     return txt;
