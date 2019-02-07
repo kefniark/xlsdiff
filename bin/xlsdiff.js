@@ -21,6 +21,7 @@ if (basearr == undefined || basearr.length < 1) {
     process.exit(1);
 }
 
+var diff = 0;
 for (var j = 0; j < basearr.length; ++j) {
     var lstfile = glob.sync(basearr[j]);
     for (var i = 0; i < lstfile.length; ++i) {
@@ -33,11 +34,17 @@ for (var j = 0; j < basearr.length; ++j) {
                     filename = srcfile.slice(0, ptindex);
                 }
 
-                var txt = xls.xlsx2txt(srcfile);
-                console.log(txt);
+                var data = xls.xlsx2txt(srcfile);
+                for (var line of data) {
+                  console.log(line);
+                }
+                diff += data.length;
             }
         }
     }
 }
 
-process.exit();
+process.stdout.write('¥n¥nFinish - ' + diff + ' lines found', () => {
+    process.exit();
+});
+  

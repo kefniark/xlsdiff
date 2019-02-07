@@ -4,6 +4,7 @@ var xlsx = require('node-xlsx');
 
 function xlsx2txt(xlsxfile) {
     var obj = xlsx.parse(xlsxfile);
+    var data = [];
     var txt = "";
     if (obj.length > 0) {
         for (var tab = 0; tab < obj.length; tab++) {
@@ -17,16 +18,16 @@ function xlsx2txt(xlsxfile) {
                     }
 
                     if (x < csvobj[y].length - 1) {
-                        txt += '| ';
+                        txt += ' | ';
                     }
                 }
 
-                console.log(txt);
+                data.push(txt);
                 txt = '';
             }
         }
     }
-    return txt;
+    return data;
 }
 
 exports.xlsx2txt = xlsx2txt;
